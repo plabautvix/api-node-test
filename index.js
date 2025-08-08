@@ -7,9 +7,9 @@ app.use(express.json());
 
 app.post('/glitchtip-webhook', async (req, res) => {
   const data = req.body;
-    console.log(data)
+    console.log(data);
   // Exemplo de extração de dados do Glitchtip
-  const project = data.project?.name || 'Projeto desconhecido';
+  const project = (data && data.project && data.project.name) ? data.project.name : 'Projeto desconhecido';
   const errorTitle = data.title || 'Erro sem título';
   const culprit = data.culprit || 'Sem informação';
   const url = data.url || '#';
